@@ -49,3 +49,16 @@ make clean
 ```
 
 Or you can check `./Makefile` for more details.
+
+
+## for microk8s
+
+```bash
+sudo snap refresh microk8s --classic --channel=edge
+
+sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target
+exec sudo nsenter -t (pidof systemd | awk 'NF>1{print $NF}') -a su - $LOGNAME
+exec sudo nsenter -t (pidof systemd) -a su - $LOGNAME
+
+mkdir -p ~/.kube && microk8s.config -l  | sed "s/:8080/:$API_PORT/" | sudo tee /var/snap/microk8s/current/kubelet.config > ~/.kube/microk8s.config
+```

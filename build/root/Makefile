@@ -30,3 +30,21 @@ alway-run-tasks:
 
 .PHONY: docker-images
 docker-images:
+
+SCRIPTS_DIR=${ROOT_DIR}/scripts
+
+.PHONY: update-manifests
+update-manifests:
+	${SCRIPTS_DIR}/update_manifest_upstream.sh
+
+.PHONY: deploy
+deploy:
+	${SCRIPTS_DIR}/deploy.sh
+
+.PHONY: undeploy
+undeploy:
+	${SCRIPTS_DIR}/undeploy.sh
+
+.PHONY: forward
+forward:
+	${SCRIPTS_DIR}/forward.sh

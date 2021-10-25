@@ -26,11 +26,11 @@ kind create cluster --config ${MANIFEST_DIR}/kind-config.yaml \
 kubectl cluster-info --context kind-kind
 
 # setup ingress-nginx
-kubectl apply -f ${MANIFEST_DIR}/ingress-nginx.yaml
-kubectl wait --namespace ingress-nginx \
-    --for=condition=ready pod \
-    --selector=app.kubernetes.io/component=controller \
-    --timeout=90s
+# kubectl apply -f ${MANIFEST_DIR}/ingress-nginx.yaml
+# kubectl wait --namespace ingress-nginx \
+#     --for=condition=ready pod \
+#     --selector=app.kubernetes.io/component=controller \
+#     --timeout=90s
 
 # setup cert-manager
-kubectl apply -f ${MANIFEST_DIR}/cert-manager.yaml
+# kubectl apply -f ${MANIFEST_DIR}/cert-manager.yaml
